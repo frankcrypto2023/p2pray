@@ -7,15 +7,12 @@ import (
 	"io"
 	"log"
 	"net"
-	"time"
 
 	libp2p "github.com/libp2p/go-libp2p"
 	dht "github.com/libp2p/go-libp2p-kad-dht"
 	"github.com/libp2p/go-libp2p/core/host"
 	"github.com/libp2p/go-libp2p/core/network"
 	"github.com/libp2p/go-libp2p/core/peer"
-	"github.com/libp2p/go-libp2p/core/peerstore"
-	"github.com/libp2p/go-libp2p/p2p/discovery/routing"
 	"github.com/multiformats/go-multiaddr"
 )
 
@@ -147,37 +144,37 @@ func main() {
 		// 启动本地监听器
 		go startLocalListener(host, peerinfo.ID)
 	}
+	/**
+		// 创建服务发现器
+		discovery := routing.NewRoutingDiscovery(dht)
 
-	// 创建服务发现器
-	discovery := routing.NewRoutingDiscovery(dht)
+		// 创建服务发现器
+		discovery.Advertise(ctx, ServiceTag)
 
-	// 创建服务发现器
-	discovery.Advertise(ctx, ServiceTag)
+		// 等待其他节点发现
+		time.Sleep(time.Second * 10)
 
-	// 等待其他节点发现
-	time.Sleep(time.Second * 10)
-
-	// 查找其他节点
-	peers, err := discovery.FindPeers(ctx, ServiceTag)
-	if err != nil {
-		log.Fatal("查找节点失败:", err)
-	}
-
-	var remotePeerID peer.ID
-	for p := range peers {
-		if p.ID == host.ID() {
-			continue
+		// 查找其他节点
+		peers, err := discovery.FindPeers(ctx, ServiceTag)
+		if err != nil {
+			log.Fatal("查找节点失败:", err)
 		}
-		remotePeerID = p.ID
-		host.Peerstore().AddAddrs(p.ID, p.Addrs, peerstore.PermanentAddrTTL)
-		break
-	}
 
-	if remotePeerID == "" {
-		log.Println("未找到其他节点，等待连接...")
-		select {}
-	}
+		var remotePeerID peer.ID
+		for p := range peers {
+			if p.ID == host.ID() {
+				continue
+			}
+			remotePeerID = p.ID
+			host.Peerstore().AddAddrs(p.ID, p.Addrs, peerstore.PermanentAddrTTL)
+			break
+		}
 
+		if remotePeerID == "" {
+			log.Println("未找到其他节点，等待连接...")
+			select {}
+		}
+	    **/
 	// 保持主程序运行
 	select {}
 }

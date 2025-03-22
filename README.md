@@ -5,6 +5,7 @@
 - `nvidia-smi.exe -l` || `nvidia-smi -l` 验证
 ```bash
 # conda create --name p2pray python=3.12.3
+# conda activate p2pray
 # python -V
 # Python 3.12.3
 # pip install 'ray[default]'
@@ -45,4 +46,9 @@
 ## 5.提交任务
 ```bash
 # ray job submit --address http://172.20.133.120:8265 --working-dir . -- python task.py
+```
+## 6. 大模型任务
+```bash
+# ollama pull llama3.2
+# 
 ```
