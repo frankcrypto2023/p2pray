@@ -1,0 +1,30 @@
+2025-03-22 20:12:26,351	INFO log_monitor.py:155 -- Starting log monitor with [max open files=200], [is_autoscaler_v2=False]
+2025-03-22 20:12:26,352	INFO log_monitor.py:278 -- Beginning to track file raylet.err
+2025-03-22 20:15:58,115	INFO log_monitor.py:278 -- Beginning to track file raylet.1.err
+2025-03-22 20:15:58,265	INFO log_monitor.py:155 -- Starting log monitor with [max open files=200], [is_autoscaler_v2=False]
+2025-03-22 20:15:58,265	INFO log_monitor.py:278 -- Beginning to track file raylet.err
+2025-03-22 20:15:58,265	INFO log_monitor.py:278 -- Beginning to track file raylet.1.err
+2025-03-22 20:16:57,317	INFO log_monitor.py:278 -- Beginning to track file raylet.2.err
+2025-03-22 20:16:57,327	INFO log_monitor.py:278 -- Beginning to track file raylet.2.err
+2025-03-22 20:16:57,530	INFO log_monitor.py:155 -- Starting log monitor with [max open files=200], [is_autoscaler_v2=False]
+2025-03-22 20:16:57,530	INFO log_monitor.py:278 -- Beginning to track file raylet.2.err
+2025-03-22 20:16:57,530	INFO log_monitor.py:278 -- Beginning to track file raylet.err
+2025-03-22 20:16:57,531	INFO log_monitor.py:278 -- Beginning to track file raylet.1.err
+2025-03-22 20:39:20,840	INFO log_monitor.py:278 -- Beginning to track file raylet.3.err
+2025-03-22 20:39:20,845	INFO log_monitor.py:278 -- Beginning to track file raylet.3.err
+2025-03-22 20:39:20,874	INFO log_monitor.py:278 -- Beginning to track file raylet.3.err
+2025-03-22 20:39:21,008	INFO log_monitor.py:155 -- Starting log monitor with [max open files=200], [is_autoscaler_v2=False]
+2025-03-22 20:39:21,009	INFO log_monitor.py:278 -- Beginning to track file raylet.2.err
+2025-03-22 20:39:21,009	INFO log_monitor.py:278 -- Beginning to track file raylet.err
+2025-03-22 20:39:21,009	INFO log_monitor.py:278 -- Beginning to track file raylet.3.err
+2025-03-22 20:39:21,009	INFO log_monitor.py:278 -- Beginning to track file raylet.1.err
+2025-03-22 20:40:45,644	INFO log_monitor.py:278 -- Beginning to track file raylet.4.err
+2025-03-22 20:40:45,654	INFO log_monitor.py:278 -- Beginning to track file raylet.4.err
+2025-03-22 20:40:45,678	INFO log_monitor.py:278 -- Beginning to track file raylet.4.err
+2025-03-22 20:40:45,680	INFO log_monitor.py:278 -- Beginning to track file raylet.4.err
+2025-03-22 20:40:45,882	INFO log_monitor.py:155 -- Starting log monitor with [max open files=200], [is_autoscaler_v2=False]
+2025-03-22 20:40:45,882	INFO log_monitor.py:278 -- Beginning to track file raylet.2.err
+2025-03-22 20:40:45,882	INFO log_monitor.py:278 -- Beginning to track file raylet.4.err
+2025-03-22 20:40:45,883	INFO log_monitor.py:278 -- Beginning to track file raylet.err
+2025-03-22 20:40:45,883	INFO log_monitor.py:278 -- Beginning to track file raylet.3.err
+2025-03-22 20:40:45,883	INFO log_monitor.py:278 -- Beginning to track file raylet.1.err

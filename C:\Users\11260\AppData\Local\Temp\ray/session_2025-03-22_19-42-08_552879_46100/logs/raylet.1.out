@@ -1,0 +1,47 @@
+[2025-03-22 20:15:58,016 I 1951736 1951736] (raylet) main.cc:219: Setting cluster ID to: 64e402b5f7a3d17f64dd0460fbea24fb473f73e1ece759888379d005
+[2025-03-22 20:15:58,029 I 1951736 1951736] (raylet) main.cc:334: Raylet is not set to kill unknown children.
+[2025-03-22 20:15:58,029 I 1951736 1951736] (raylet) io_service_pool.cc:35: IOServicePool is running with 1 io_service.
+[2025-03-22 20:15:58,030 I 1951736 1951736] (raylet) main.cc:464: Setting node ID node_id=5865cc276c887bfecad01660931e4404c3107e7ef639cd56a906e763
+[2025-03-22 20:15:58,032 I 1951736 1951736] (raylet) store_runner.cc:51: Allowing the Plasma store to use up to 2.00159GB of memory.
+[2025-03-22 20:15:58,032 I 1951736 1951736] (raylet) store_runner.cc:67: Starting object store with directory /dev/shm, fallback C:\Users\11260\AppData\Local\Temp\ray, and huge page support disabled
+[2025-03-22 20:15:58,038 I 1951736 1951767] (raylet) dlmalloc.cc:153: create_and_mmap_buffer(2001600520, /dev/shm/plasmaXXXXXX)
+[2025-03-22 20:15:58,042 W 1951736 1951767] (raylet) file_system_monitor.cc:59: Failed to get capacity of C:\Users\11260\AppData\Local\Temp\ray\session_2025-03-22_19-41-25_494699_4860 with error: No such file or directory
+[2025-03-22 20:15:58,043 E 1951736 1951736] (raylet) logging.cc:113: Unhandled exception: N5boost10wrapexceptINS_6system12system_errorEEE. what(): Invalid argument [system:22]
+[2025-03-22 20:15:58,048 E 1951736 1951767] (raylet) logging.cc:113: Unhandled exception: N5boost10wrapexceptINS_6system12system_errorEEE. what(): Invalid argument [system:22]
+[2025-03-22 20:15:58,057 E 1951736 1951767] (raylet) logging.cc:120: Stack trace: 
+ /root/anaconda3/envs/p2pray/lib/python3.12/site-packages/ray/core/src/ray/raylet/raylet(+0xdb3cea) [0x55575745bcea] ray::operator<<()
+/root/anaconda3/envs/p2pray/lib/python3.12/site-packages/ray/core/src/ray/raylet/raylet(+0xdb6c02) [0x55575745ec02] ray::TerminateHandler()
+/lib/x86_64-linux-gnu/libstdc++.so.6(+0xbb0da) [0x7f4689f550da]
+/lib/x86_64-linux-gnu/libstdc++.so.6(_ZSt10unexpectedv+0) [0x7f4689f3fa55] std::unexpected()
+/lib/x86_64-linux-gnu/libstdc++.so.6(+0xbb391) [0x7f4689f55391]
+/root/anaconda3/envs/p2pray/lib/python3.12/site-packages/ray/core/src/ray/raylet/raylet(+0x1eb5f6) [0x5557568935f6] boost::throw_exception<>()
+/root/anaconda3/envs/p2pray/lib/python3.12/site-packages/ray/core/src/ray/raylet/raylet(+0x1eb63b) [0x55575689363b] boost::asio::detail::do_throw_error()
+/root/anaconda3/envs/p2pray/lib/python3.12/site-packages/ray/core/src/ray/raylet/raylet(+0xdc3c24) [0x55575746bc24] boost::asio::ip::make_address()
+/root/anaconda3/envs/p2pray/lib/python3.12/site-packages/ray/core/src/ray/raylet/raylet(+0xdc3c45) [0x55575746bc45] boost::asio::ip::make_address()
+/root/anaconda3/envs/p2pray/lib/python3.12/site-packages/ray/core/src/ray/raylet/raylet(+0xda8664) [0x555757450664] ParseUrlEndpoint()
+/root/anaconda3/envs/p2pray/lib/python3.12/site-packages/ray/core/src/ray/raylet/raylet(+0x44acee) [0x555756af2cee] plasma::PlasmaStore::PlasmaStore()
+/root/anaconda3/envs/p2pray/lib/python3.12/site-packages/ray/core/src/ray/raylet/raylet(+0x441c84) [0x555756ae9c84] plasma::PlasmaStoreRunner::Start()
+/root/anaconda3/envs/p2pray/lib/python3.12/site-packages/ray/core/src/ray/raylet/raylet(+0x4029f5) [0x555756aaa9f5] std::thread::_State_impl<>::_M_run()
+/root/anaconda3/envs/p2pray/lib/python3.12/site-packages/ray/core/src/ray/raylet/raylet(+0xe0b820) [0x5557574b3820] execute_native_thread_routine
+/lib/x86_64-linux-gnu/libc.so.6(+0x9caa4) [0x7f4689cf4aa4]
+/lib/x86_64-linux-gnu/libc.so.6(+0x129c3c) [0x7f4689d81c3c]
+
+[2025-03-22 20:15:58,062 E 1951736 1951767] (raylet) logging.cc:497: *** SIGABRT received at time=1742645758 on cpu 22 ***
+[2025-03-22 20:15:58,062 E 1951736 1951767] (raylet) logging.cc:497: PC: @     0x7f4689cf6b2c  (unknown)  pthread_kill
+[2025-03-22 20:15:58,062 E 1951736 1951767] (raylet) logging.cc:497:     @     0x7f4689c9d330       1536  (unknown)
+[2025-03-22 20:15:58,062 E 1951736 1951767] (raylet) logging.cc:497:     @     0x7f4689c9d27e         32  raise
+[2025-03-22 20:15:58,062 E 1951736 1951767] (raylet) logging.cc:497:     @     0x7f4689c808ff        192  abort
+[2025-03-22 20:15:58,062 E 1951736 1951767] (raylet) logging.cc:497:     @     0x55575745ebda       1184  ray::TerminateHandler()
+[2025-03-22 20:15:58,063 E 1951736 1951767] (raylet) logging.cc:497:     @     0x7f4689f550da         16  (unknown)
+[2025-03-22 20:15:58,063 E 1951736 1951767] (raylet) logging.cc:497:     @     0x7f4689f3fa55         16  std::terminate()
+[2025-03-22 20:15:58,063 E 1951736 1951767] (raylet) logging.cc:497:     @     0x7f4689f55391         48  __cxa_throw
+[2025-03-22 20:15:58,063 E 1951736 1951767] (raylet) logging.cc:497:     @     0x5557568935f6         48  boost::throw_exception<>()
+[2025-03-22 20:15:58,063 E 1951736 1951767] (raylet) logging.cc:497:     @     0x55575689363b        112  boost::asio::detail::do_throw_error()
+[2025-03-22 20:15:58,063 E 1951736 1951767] (raylet) logging.cc:497:     @     0x55575746bc24         96  boost::asio::ip::make_address()
+[2025-03-22 20:15:58,063 E 1951736 1951767] (raylet) logging.cc:497:     @     0x55575746bc45         32  boost::asio::ip::make_address()
+[2025-03-22 20:15:58,063 E 1951736 1951767] (raylet) logging.cc:497:     @     0x555757450664       1584  ParseUrlEndpoint()
+[2025-03-22 20:15:58,063 E 1951736 1951767] (raylet) logging.cc:497:     @     0x555756af2cee        400  plasma::PlasmaStore::PlasmaStore()
+[2025-03-22 20:15:58,063 E 1951736 1951767] (raylet) logging.cc:497:     @     0x555756ae9c84       1456  plasma::PlasmaStoreRunner::Start()
+[2025-03-22 20:15:58,063 E 1951736 1951767] (raylet) logging.cc:497:     @     0x555756aaa9f5        208  std::thread::_State_impl<>::_M_run()
+[2025-03-22 20:15:58,063 E 1951736 1951767] (raylet) logging.cc:497:     @     0x5557574b3820  262725088  execute_native_thread_routine
+[2025-03-22 20:15:58,063 E 1951736 1951767] (raylet) logging.cc:497:     @ ... and at least 3 more frames
