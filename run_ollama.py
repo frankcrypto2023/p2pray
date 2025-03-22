@@ -1,5 +1,11 @@
 import subprocess
 import ray
+# import sys
+# sys.setdefaultencoding('utf-8')
+
+themes = ["写一篇关于AI大语言模型对比的分析",
+"写一篇AI未来发展的文章","写一篇关于zig编程语言的教程",
+"AI在区块链中的应用"]
 
 @ray.remote(num_gpus=1)
 def call_with_ollama(model,input):
@@ -13,7 +19,7 @@ def call_with_ollama(model,input):
 ray.init()
 
 # 假设有4个任务，每个任务处理不同的数据批次
-tasks = [call_with_ollama.remote("llama3.2", f"hello {i}") for i in range(4)]
+tasks = [call_with_ollama.remote("llama3.2", f"{themes[i]}") for i in range(4)]
 results = ray.get(tasks)
 for res in results:
     print(res)
