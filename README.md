@@ -1,5 +1,7 @@
 # 利用libp2p+Ray+ollama构建共享去中心化GPU 调用大模型
 ## Ray 是基于python的 GPU集群运算框架 [https://github.com/ray-project/ray](https://github.com/ray-project/ray)
+## 总体架构
+![image](./ray.png)
 ## 1.环境准备
 - 客户端环境拥有用 nvidia GPU,CUDA
 - ollama 安装 [https://ollama.com/download](https://ollama.com/download)
@@ -65,7 +67,7 @@ themes = ["写一篇关于AI大语言模型对比的分析",
 "写一篇AI未来发展的文章","写一篇关于zig编程语言的教程",
 "AI在区块链中的应用"]
 
-@ray.remote(num_gpus=1)
+@ray.remote(num_gpus=1) #使用的gpu数量
 def call_with_ollama(model,input):
     # 构造命令，假设 Ollama 支持传入训练数据和输出路径
     cmd = f'ollama run {model} "{input}"'
@@ -84,10 +86,45 @@ for res in results:
 ray.shutdown()
 
 ```
-## 8.提交大模型任务
+## 8.提交调用大模型任务
 ```bash
 # Ubuntu
 # ray job submit --address http://172.20.133.120:8265 --working-dir . -- python run_ollama.py
 # Windows
 # # ray job submit --address http://172.20.133.120:8265 -- python run_ollama.py
+```
+## 9.模型并行训练调用示例
+```python
+import ray
+from ray.train.torch import TorchTrainer, TorchConfig
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.nn.parallel import DistributedDataParallel as DDP
+
+def train_func(config):
+    import torch.distributed as dist
+    dist.init_process_group(backend="nccl")
+    device = torch.device("cuda:0")
+    model = nn.Linear(10, 10).to(device)
+    ddp_model = DDP(model, device_ids=[0])
+    optimizer = optim.SGD(ddp_model.parameters(), lr=0.001)
+    for epoch in range(5):
+        x = torch.randn(32, 10).to(device)
+        output = ddp_model(x)
+        loss = output.mean()
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+        print(f"Epoch {epoch}, Loss: {loss.item()}")
+    dist.destroy_process_group()
+
+trainer = TorchTrainer(
+    train_loop_per_worker=train_func,
+    scaling_config=ray.train.ScalingConfig(num_workers=4, use_gpu=True),
+    torch_config=TorchConfig(backend="nccl")
+)
+trainer.train()
+ray.shutdown()
+
 ```
